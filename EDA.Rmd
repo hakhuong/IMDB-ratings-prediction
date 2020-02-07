@@ -1,0 +1,73 @@
+---
+title: "imdb"
+author: "Hannah Khuong"
+date: "2/6/2020"
+output: html_document:
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	fig.width = 6,
+	message = FALSE,
+	warning = FALSE,
+	include = TRUE,
+	echo = TRUE
+)
+
+options(tinytex.verbose = TRUE)
+# 
+# # Clear environment of variables and functions
+# rm(list = ls(all = TRUE)) 
+# 
+# # Clear environment of packages
+# if(is.null(sessionInfo()$otherPkgs) == FALSE) {
+#   lapply(paste("package:", names(sessionInfo()$otherPkgs), sep=""), 
+#          detach, character.only = TRUE, unload = TRUE)
+# }
+```
+
+```{r setup, include=FALSE}
+
+library(tidyverse)
+
+install.packages('DataExplorer')  # Quick EDA and missing data viz
+library(DataExplorer)
+```
+
+# Data
+
+```{r warnings = FALSE, message = FALSE}
+df <- read_csv("movie_metadata.csv")
+```
+
+# EDA
+
+```{r}
+# reorder by column name
+df <- df[c("movie_title", "title_year", "imdb_score",'content_rating', "genres", "color", "language", 'country', 'budget', 'gross','duration', 'aspect_ratio','plot_keywords', 'director_name', 'director_facebook_likes', 'actor_1_name', 'actor_1_facebook_likes',   'actor_2_name', 'actor_2_facebook_likes',  'actor_3_name', 'actor_3_facebook_likes', 'cast_total_facebook_likes', 'num_user_for_reviews', 'num_critic_for_reviews', 'num_voted_users', 'facenumber_in_poster', 'movie_imdb_link')]
+```
+
+```{r}
+summary(df)
+```
+
+
+```{r fig.height = 4}
+plot_missing(df)
+```
+
+```{r fig.height = 5}
+plot_histogram(df)
+```
+
+```{r}
+colnames(df)
+```
+
+## Univariate 
+
+```{r}
+
+```
+
